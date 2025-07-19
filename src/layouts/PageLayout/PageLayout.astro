@@ -1,5 +1,5 @@
 ---
-const { frontmatter } = Astro.props;
+const { frontmatter, headings } = Astro.props;
 // 页面 Info
 import SITE_CONFIG from "@/config";
 const { Description, Title } = SITE_CONFIG;
@@ -16,7 +16,7 @@ import "@/styles/ArticleBase.less";
 import "./PageLayout.less";
 ---
 
-<Layout title={frontmatter.title || Title} description={Description} activeNav={frontmatter.type || "-"}>
+<Layout title={frontmatter.title || Title} description={Description} activeNav={frontmatter.type || "-"} headings={headings}>
 	<section class="vh-page vh-about vh-animation vh-animation-init">
 		<header class="vh-page-header">
 			<h1>{frontmatter.h1}</h1>
