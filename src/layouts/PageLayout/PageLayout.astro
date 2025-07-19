@@ -1,5 +1,7 @@
 ---
 const { frontmatter, headings } = Astro.props;
+console.log('✅ 1. PageLayout - 成功从 Astro 接收到 headings:', headings); // <--- 添加这一行
+// ... 其他代码不变
 // 页面 Info
 import SITE_CONFIG from "@/config";
 const { Description, Title } = SITE_CONFIG;
