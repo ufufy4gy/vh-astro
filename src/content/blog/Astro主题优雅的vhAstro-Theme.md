@@ -1,9 +1,8 @@
 ---
 title: "Astro主题-优雅的vhAstro-Theme【使用文档】"
-author: ".𝙃𝙖𝙣" # 您可以替换为自己的名字
-pubDate: 2025-03-02
-description: "Astro 活跃的社区支持、广泛的现代框架兼容性、高效的性能优化、优秀的开发体验以及原生 SEO 优化，支持 Markdown/MDX 编写内容，是我心目中最适合构建博客这样的以内容驱动的网站的 Web 框架。"
-h1: "Astro主题-优雅的vhAstro-Theme【使用文档】"
+id: "astro-theme-vhastro-theme"
+date: 2025-03-02 18:18:18
+categories: Code
 tags: ["Astro", "主题", "博客", "vhAstro", "vhAstro-Theme"]
 cover: "https://i0.wp.com/uxiaohan.github.io/v2/2025/04/1743737394560.webp"
 recommend: true
