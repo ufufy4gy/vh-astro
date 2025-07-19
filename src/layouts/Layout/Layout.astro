@@ -1,5 +1,7 @@
 ---
 const { title, keywords, description, pagecover, activeNav, Home, headings } = Astro.props;
+console.log('✅ 2. Layout - 成功从 PageLayout 接收到 headings:', headings); // <--- 添加这一行
+// ... 其他代码不变
 // 网站配置
 import SITE_INFO from "@/config";
 const { GoogleAds, Theme, HomeBanner } = SITE_INFO;
