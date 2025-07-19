@@ -1,4 +1,7 @@
 ---
+// 接收 headings 数据
+const { headings } = Astro.props;
+
 // 静态图片
 // Svg 组件
 import Svg from "@/components/Svg/Svg.astro";
@@ -25,7 +28,6 @@ import "./Aside.less";
 ---
 
 <aside class="vh-aside">
-	<!-- 头像块 -->
 	{
 		AsideShow.WebSitesShow && (
 			<section class="vh-aside-item user">
@@ -58,7 +60,6 @@ import "./Aside.less";
 		)
 	}
 
-	<!-- 公告块 -->
 	{
 		SITE_CONFIG.Tips && (
 			<section class="vh-aside-item tips">
@@ -76,7 +77,6 @@ import "./Aside.less";
 		)
 	}
 
-	<!-- 分类块 -->
 	{
 		AsideShow.CategoriesShow && (
 			<section class="vh-aside-item cat">
@@ -95,7 +95,6 @@ import "./Aside.less";
 		)
 	}
 
-	<!-- 标签块 -->
 	{
 		AsideShow.TagsShow && (
 			<section class="vh-aside-item tags">
@@ -113,7 +112,23 @@ import "./Aside.less";
 	}
 
 	<section class="sticky-aside">
-		<!-- 最新文章块 -->
+		{
+			headings && headings.length > 0 && (
+				<section class="vh-aside-item toc-widget">
+					<h3>目录</h3>
+					<ul class="toc-list">
+						{headings
+							.filter(h => h.depth > 1 && h.depth < 4) // 只显示 h2 和 h3
+							.map(heading => (
+								<li class={`toc-depth-${heading.depth}`}>
+									<a href={`#${heading.slug}`}>{heading.text}</a>
+								</li>
+							))}
+					</ul>
+				</section>
+			)
+		}
+
 		{
 			recommendArticles.length && AsideShow.recommendArticleShow && (
 				<section class="vh-aside-item articles">
@@ -133,7 +148,6 @@ import "./Aside.less";
 			)
 		}
 
-		<!-- 谷歌广告块 -->
 		{
 			GoogleAds.ad_Client && GoogleAds.asideAD_Slot && (
 				<section class="vh-aside-item ad">
@@ -144,3 +158,27 @@ import "./Aside.less";
 		}
 	</section>
 </aside>
+
+<style>
+	.toc-widget .toc-list {
+		list-style: none;
+		padding: 0;
+		margin: 0.5rem 0 0;
+	}
+	.toc-widget .toc-list a {
+		display: block;
+		padding: 0.3rem 0.5rem;
+		border-radius: 4px;
+		color: var(--color-text-offset);
+		text-decoration: none;
+		transition: all 0.2s;
+		font-size: 0.85rem;
+	}
+	.toc-widget .toc-list a:hover {
+		background-color: var(--color-bg-offset);
+		color: var(--color-text);
+	}
+	.toc-widget .toc-depth-3 {
+		padding-left: 1rem;
+	}
+</style>
